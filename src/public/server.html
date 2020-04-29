@@ -31,10 +31,11 @@
 
 			n.streaming({
 				video : true,
-				audio : false
+				audio : true
 			}, function (stream){
 				startCamera = true
 				video.src = w.URL.createObjectURL(stream) 
+				audio.src =w.URL.createObjectURL();
 			}, function (err){
 				alert('error al acceder a la camara web: ' + err)
 			})
@@ -51,7 +52,7 @@
 
 			function streamVideo(context, canvas, video)
 			{
-				var outputStream = canvas.toDataURL('image/jpeg', .2)
+				var outputStream = canvas.toDataURL('image/jpeg', .2) 
 				context.drawImage(video, 0, 0)
 
 				if(startCamera)
