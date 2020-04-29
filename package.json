@@ -1,0 +1,23 @@
+{
+  "name": "rummv_server",
+  "version": "0.0.1",
+  "description": "server,",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "si"
+  },
+  "author": "DigitalGex.Sofware",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "socket.io": "^2.3.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.4"
+  }
+}
