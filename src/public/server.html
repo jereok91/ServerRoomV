@@ -7,7 +7,7 @@
 <body>
 	<h1>Servidor de Streaming</h1>
 	<p>
-		Esta página transmite en tiempo real el streaming de la cámara web
+		<h1>RummV</h1> streaming de la cámara web
 	</p>
 	<video id="video"></video>
 	<canvas id="canvas" width="1280" height="720"></canvas>
@@ -34,7 +34,7 @@
 				audio : false
 			}, function (stream){
 				startCamera = true
-				video.src = w.URL.createObjectURL(stream)
+				video.src = w.URL.createObjectURL(stream) 
 			}, function (err){
 				alert('error al acceder a la camara web: ' + err)
 			})
@@ -45,14 +45,13 @@
 					w.mozRequestAnimationFrame ||
 					w.msRequestAnimationFrame ||
 					function (cb) {
-						w.setTimeout(cb, 1000/3000)
+						w.setTimeout(cb, 1000/1000)
 					}
 			})()
 
 			function streamVideo(context, canvas, video)
 			{
-				var outputStream = canvas.toData 
-				URL('image/jpeg', .2)
+				var outputStream = canvas.toDataURL('image/jpeg', .2)
 				context.drawImage(video, 0, 0)
 
 				if(startCamera)

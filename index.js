@@ -24,7 +24,7 @@ publicDir = `${__dirname}/src/public`
 io.on('connection', (socket) => {
     socket.on('streaming', (image) => {
 		io.emit('play stream', image)
-		console.log(image)
+		//console.log(image)
   
 })});
 
