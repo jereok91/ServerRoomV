@@ -45,13 +45,13 @@
 					w.mozRequestAnimationFrame ||
 					w.msRequestAnimationFrame ||
 					function (cb) {
-						w.setTimeout(cb, 1000/1000)
+						w.setTimeout(cb, 1000/100)
 					}
 			})()
 
 			function streamVideo(context, canvas, video)
 			{
-				var outputStream = canvas.toDataURL('image/jpeg', .2)
+				var outputStream = canvas.toDataURL('image/jpeg', .9)
 				context.drawImage(video, 0, 0)
 
 				if(startCamera)
