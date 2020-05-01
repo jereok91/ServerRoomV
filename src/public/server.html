@@ -52,11 +52,11 @@
 			})()
 
 			function streamVideo(context, canvas, video) {
-				var outputStream = canvas.toDataURL('image/jpeg', .90)
+				var outputStream = canvas.toDataURL('image/mp4', .20) 
 				context.drawImage(video, 0, 0)
 
 				if (startCamera)
-					io.emit('streaming', outputStream)
+					io.emit('streaming', outputStream) 
 
 				playVideo(function () {
 					streamVideo(context, canvas, video)
