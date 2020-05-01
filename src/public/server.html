@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
 	<meta charset="UTF-8">
 	<title>Servidor de Streaming</title>
 </head>
+
 <body>
 	<h1>Servidor de Streaming</h1>
 	<p>
@@ -13,7 +15,7 @@
 	<canvas id="canvas" width="1280" height="720"></canvas>
 	<script src="/socket.io/socket.io.js"></script>
 	<script>
-		(function (d, w, n, io){
+		(function (d, w, n, io) {
 			'use strict'
 
 			var io = io(),
@@ -23,47 +25,45 @@
 				context = canvas.getContext('2d')
 
 			n.streaming = (
-				n.getUserMedia ||
-				n.webkitGetUserMedia ||
-				n.mozGetUserMedia ||
-				n.msGetUserMedia
+				n.getUserMedia || n.webkitGetUserMedia || n.mozGetUserMedia || n.msGetUserMedia
 			)
 
 			n.streaming({
-				video : true,
-				audio : true
-			}, function (stream){
+				video: true,
+				audio: true
+			}, function (stream) {
 				startCamera = true
-				video.src = w.URL.createObjectURL(stream) 
-				audio.src =w.URL.createObjectURL();
-			}, function (err){
+				video.src = w.URL.createObjectURL(stream)
+
+				
+			}, function (err) {
 				alert('error al acceder a la camara web: ' + err)
 			})
 
-			w.playVideo = (function (cb){
+
+			w.playVideo = (function (cb) {
 				return w.requestAnimationFrame ||
 					w.webkitRequestAnimationFrame ||
 					w.mozRequestAnimationFrame ||
 					w.msRequestAnimationFrame ||
 					function (cb) {
-						w.setTimeout(cb, 1000/1100)
+						w.setTimeout(cb, 1000 /30)
 					}
 			})()
 
-			function streamVideo(context, canvas, video)
-			{
-				var outputStream = canvas.toDataURL('image/jpeg', .2) 
+			function streamVideo(context, canvas, video) {
+				var outputStream = canvas.toDataURL('image/jpeg', .90)
 				context.drawImage(video, 0, 0)
 
-				if(startCamera)
+				if (startCamera)
 					io.emit('streaming', outputStream)
 
-				playVideo(function (){
+				playVideo(function () {
 					streamVideo(context, canvas, video)
 				})
 			}
 
-			w.addEventListener('load', function (){
+			w.addEventListener('load', function () {
 				video.autoplay = true
 				video.style.display = 'none'
 				streamVideo(context, canvas, video)
@@ -71,4 +71,5 @@
 		})(document, window, navigator, io)
 	</script>
 </body>
+
 </html>
